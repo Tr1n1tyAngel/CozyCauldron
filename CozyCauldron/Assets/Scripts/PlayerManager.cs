@@ -46,50 +46,58 @@ public class PlayerManager : MonoBehaviour
         {
             interact.SetActive(true);
 
-            if(Input.GetKeyDown(KeyCode.W))
+            if(cauldronManager.activeSelf)
             {
-                if(playerInventory.ingredient1 !=0)
+                if (Input.GetKeyDown(KeyCode.W))
                 {
-                    Debug.Log("IADD");
-                    playerInventory.ingredient1--;
-                    i1Added++;
-                    
+                    if (playerInventory.ingredient1 != 0)
+                    {
+                        Debug.Log("IADD");
+                        playerInventory.ingredient1--;
+                        i1Added++;
+
+                    }
+
                 }
-                
-            }
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                if (playerInventory.ingredient2 != 0)
+                if (Input.GetKeyDown(KeyCode.A))
                 {
-                    Debug.Log("IADD");
-                    playerInventory.ingredient2--;
-                    i2Added++;
-                    
+                    if (playerInventory.ingredient2 != 0)
+                    {
+                        Debug.Log("IADD");
+                        playerInventory.ingredient2--;
+                        i2Added++;
+
+                    }
+
                 }
-                
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                if (playerInventory.ingredient3 != 0)
+                if (Input.GetKeyDown(KeyCode.S))
                 {
-                    Debug.Log("IADD");
-                    playerInventory.ingredient3--;
-                    i3Added++;
-                    
+                    if (playerInventory.ingredient3 != 0)
+                    {
+                        Debug.Log("IADD");
+                        playerInventory.ingredient3--;
+                        i3Added++;
+
+                    }
+
                 }
-                    
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                if (playerInventory.ingredient4 != 0)
+                if (Input.GetKeyDown(KeyCode.D))
                 {
-                    Debug.Log("IADD");
-                    playerInventory.ingredient4--;
-                    i4Added++;
-                    
+                    if (playerInventory.ingredient4 != 0)
+                    {
+                        Debug.Log("IADD");
+                        playerInventory.ingredient4--;
+                        i4Added++;
+
+                    }
+
                 }
-                    
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    IngredientsSelected();
+                }
             }
+            
             if (Input.GetKeyDown(KeyCode.E))
             {
                 animator.SetBool("Stir",true);
@@ -99,10 +107,7 @@ public class PlayerManager : MonoBehaviour
                 interact.SetActive(false);
 
             }
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                IngredientsSelected();
-            }
+            
         }
         
 
@@ -129,19 +134,19 @@ public class PlayerManager : MonoBehaviour
             animator.SetBool("Stir", false);
             cauldronManager.SetActive(false);
             menu.rbFreeze = false;
-        if (i1Added == 10)
+        if (i1Added == 1)
         {
             familiarSpawner.f1 = true;
         }
-        else if (i2Added == 10)
+         if (i2Added == 1)
         {
             familiarSpawner.f2 = true;
         }
-        else if (i3Added == 10)
+         if (i3Added == 1)
         {
             familiarSpawner.f3 = true;
         }
-        else if (i4Added == 10)
+         if (i4Added == 1)
         {
             familiarSpawner.f4 = true;
         }

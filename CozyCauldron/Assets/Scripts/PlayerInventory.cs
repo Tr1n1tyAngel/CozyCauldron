@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerInventory : MonoBehaviour
 {
     public ItemFind[] itemFinds; // Array to hold multiple ItemFind objects
+    public Familiar[] familiars;
     public string itemFound;
     public int ingredient1;
     public int ingredient2;
@@ -29,9 +30,19 @@ public class PlayerInventory : MonoBehaviour
         // Iterate through itemFinds to find the first one that is searching
         foreach (ItemFind itemFind in itemFinds)
         {
+
             if (itemFind.searching)
             {
                 ProcessItemFind(itemFind);
+                Debug.Log("Item is found");
+                break; // Exit the loop after processing the first searching itemFind
+            }
+        }
+        foreach (Familiar familiar in familiars)
+        {
+            if (familiar.searching)
+            {
+                ProcessFamiliarItemFind(familiar);
                 break; // Exit the loop after processing the first searching itemFind
             }
         }
@@ -69,12 +80,37 @@ public class PlayerInventory : MonoBehaviour
                 ingImage.sprite = i5;
                 break;
         }
-        itemFind.searching = false; // Set searching to false after processing
+        
 
         if (itemFind.itemToGive != 5)
         {
             ingredientGainedTxt.text = itemFound + " " + itemFind.itemCount;
         }
+        itemFind.searching = false; // Set searching to false after processing
+    }
+    private void ProcessFamiliarItemFind(Familiar familiar)
+    {
+        // Process the item based on the given type
+        switch (familiar.itemToGive)
+        {
+            case 1:
+                ingredient1 += familiar.itemCount;
+
+                break;
+            case 2:
+                ingredient2 += familiar.itemCount;
+
+                break;
+            case 3:
+                ingredient3 += familiar.itemCount;
+
+                break;
+            case 4:
+                ingredient4 += familiar.itemCount;
+
+                break;
+        }
+        familiar.searching = false;
     }
 
     private void UpdateUI()

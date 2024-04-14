@@ -5,15 +5,13 @@ using UnityEngine.TextCore.Text;
 
 public class FamiliarSpawner : MonoBehaviour
 {
-    //public Familiar[] familiars; // Array of character prefabs
-    public Transform spawnPoint;
+    public GameObject[] familiars;
     public bool f1;
     public bool f2;
     public bool f3;
     public bool f4;
-    public int chosenFamiliar;
-
-    //private List<Familiar> spawnedFamiliars = new List<Familiar>(); // List to hold references to spawned characters
+    public int chosenFam;
+    
 
     void Update()
     {
@@ -21,42 +19,31 @@ public class FamiliarSpawner : MonoBehaviour
             
             if (f1 == true)
             {
-            SpawnFamiliar(0);
+            chosenFam = 0;
+            familiars[chosenFam].SetActive(true);
             f1 = false;
             }
             if (f2 == true)
             {
-            SpawnFamiliar(1);
+            chosenFam = 1;
+            familiars[chosenFam].SetActive(true);
             f2 = false;
             }
             if (f3 == true)
             {
-            SpawnFamiliar(2);
+            chosenFam = 2;
+            familiars[chosenFam].SetActive(true);
             f3 = false;
             }
             if (f4 == true)
             {
-            SpawnFamiliar(3);
+            chosenFam = 3;
+            familiars[chosenFam].SetActive(true);
             f4 = false;
             }
     }
 
-    void SpawnFamiliar(int index)
-    {
-        /*if (index < familiars.Length)
-        {
-            Familiar spawned = Instantiate(familiars[index], spawnPoint.position, Quaternion.identity);
-            // Add the spawned character to the list of spawned characters
-            spawnedFamiliars.Add(spawned);
-
-            // Example call to method within the spawned character
-            spawned.TryToFindItem();
-        }
-        else
-        {
-            Debug.LogError("Index out of range for spawning characters.");
-        }*/
-    }
+    
 }
 
    

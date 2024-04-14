@@ -10,6 +10,7 @@ public class ItemFind : MonoBehaviour
     private bool playerIsNear = false;
     private int searchAttempts = 0;  // To keep track of how many times the player has searched
     private float cooldownTimer = 0f;  // Timer to track the cooldown period
+    private float searchDelayTimer = 0f;  // Timer to enforce delay between searches
     public int itemToGive;
     public int itemCount;
     public SpriteRenderer spriteRenderer;
@@ -19,7 +20,9 @@ public class ItemFind : MonoBehaviour
     public bool searching;
     public GameObject timerCanvas;
     public TextMeshProUGUI timerText;
-    
+    public Animator animator;
+    public Rigidbody2D rb;
+    public Menu menu;   
 
     private void Start()
     {
@@ -28,20 +31,32 @@ public class ItemFind : MonoBehaviour
 
     void Update()
     {
-        // If the player is near and there is no cooldown active, allow searching
-        if (playerIsNear && cooldownTimer <= 0 && Input.GetKeyDown(KeyCode.E))
+        // If the player is near, no cooldown is active, and the search delay has elapsed, allow searching
+        if (playerIsNear && cooldownTimer <= 0 && searchDelayTimer <= 0 && Input.GetKeyDown(KeyCode.E))
         {
+            
             timerCanvas.SetActive(false);
             SearchAndGiveItem();
-            
-            
+            StartCoroutine(Searching());
         }
+        
+        
+           
+            
 
         // Decrement the cooldown timer if it's active
         if (cooldownTimer > 0)
         {
             timerText.text = Mathf.FloorToInt(cooldownTimer) + " Seconds";
             cooldownTimer -= Time.deltaTime;
+        }
+
+        // Decrement the search delay timer if it's active
+        if (searchDelayTimer > 0)
+        {
+            searchDelayTimer -= Time.deltaTime;
+
+            
         }
     }
 
@@ -65,9 +80,11 @@ public class ItemFind : MonoBehaviour
 
     private void SearchAndGiveItem()
     {
+        searchDelayTimer = 3.0f; // Reset the search delay timer to 3 seconds for the next search
         searchAttempts++;
         if (searchAttempts < 3)
         {
+            
             TryToFindItem();
         }
         else if (searchAttempts == 3)
@@ -82,8 +99,13 @@ public class ItemFind : MonoBehaviour
 
     private void TryToFindItem()
     {
+       
         searching = true;
-        if (Random.Range(1, 5) == 1)  // 1 in 4 chance
+        if(searching==true)
+        {
+            Debug.Log("searching true");
+        }
+        if (Random.Range(1, 5)== 1)  // 1 in 4 chance
         {
             itemToGive = Random.Range(1, 5);
             itemCount = GetRandomItemCount();
@@ -97,8 +119,8 @@ public class ItemFind : MonoBehaviour
             Debug.Log("No items found.");
             itemDisplay.SetActive(true);
             Invoke("DisplayReset", 2);
-
         }
+        
     }
 
     private int GetRandomItemCount()
@@ -133,5 +155,16 @@ public class ItemFind : MonoBehaviour
                 spriteRenderer.sprite = i4;
                 break;
         }
+    }
+    public IEnumerator Searching()
+    {
+        Debug.Log("Searching");
+        animator.SetBool("Searching", true);
+        menu.rbFreeze = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        yield return new WaitForSeconds(3);
+        menu.rbFreeze = false;
+        Debug.Log("NotSearching");
+        animator.SetBool("Searching", false);
     }
 }

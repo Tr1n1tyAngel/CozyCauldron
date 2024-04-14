@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
         // Only process movement input if the character is grounded
         if (isGrounded)
         {
+            animator.SetBool("Grounded", true);
             // Movement input from the player
             float moveHorizontal = Input.GetAxis("Horizontal");
 
@@ -33,6 +34,10 @@ public class PlayerMovement : MonoBehaviour
                 Flip();
             else if (moveHorizontal < 0 && facingRight)
                 Flip();
+        }
+        else
+        {
+            animator.SetBool("Grounded", false);
         }
 
         // Checking if the jump button (space bar) is pressed and the character is grounded
