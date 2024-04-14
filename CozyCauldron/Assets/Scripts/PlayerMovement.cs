@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = true;      // Boolean to check if the player is grounded
     private bool facingRight = true;     // Track which way the player is facing
     public Animator animator;
+    public bool audioPlaying;
 
     void Start()
     {
@@ -21,6 +22,22 @@ public class PlayerMovement : MonoBehaviour
         // Only process movement input if the character is grounded
         if (isGrounded)
         {
+            if (rb.velocity.magnitude < 0.01f)  // Use a small threshold to account for floating-point imprecision
+            {
+                AudioManager.instance.StopSFX();
+                audioPlaying = false;
+            }
+            else
+            {
+                if (audioPlaying == false)
+                {
+                    AudioManager.instance.SetSFXVolume(0.75f);
+                    AudioManager.instance.PlaySFXLoop(0);
+                    audioPlaying = true;
+                }
+            }
+            
+            
             animator.SetBool("Grounded", true);
             // Movement input from the player
             float moveHorizontal = Input.GetAxis("Horizontal");
@@ -37,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.StopSFX();
+            audioPlaying = false;
             animator.SetBool("Grounded", false);
         }
 

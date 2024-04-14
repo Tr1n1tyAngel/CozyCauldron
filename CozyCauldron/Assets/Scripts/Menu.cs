@@ -14,6 +14,14 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.PlayMusic(0);
+        
+        AudioManager.instance.PlayAmbience(0);
+        // Get the current screen's resolution
+        Resolution currentResolution = Screen.currentResolution;
+
+        // Set the resolution and make it fullscreen
+        Screen.SetResolution(currentResolution.width, currentResolution.height, true);
         rbFreeze = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         Time.timeScale = 0f;
@@ -28,6 +36,8 @@ public class Menu : MonoBehaviour
     }
     public void GameStart()
     {
+        AudioManager.instance.SetSFXVolume(1);
+        AudioManager.instance.PlaySFX(0);
         outsideWall.SetActive(false);
         rbFreeze = false;
         Time.timeScale = 1f;
@@ -38,6 +48,8 @@ public class Menu : MonoBehaviour
     }
     public void GameQuit()
     {
+        AudioManager.instance.SetSFXVolume(1);
+        AudioManager.instance.PlaySFX(0);
         Application.Quit();
     }
 

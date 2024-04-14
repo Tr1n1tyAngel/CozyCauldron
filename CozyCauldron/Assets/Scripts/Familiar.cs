@@ -19,7 +19,7 @@ public class Familiar : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = moveSpeed;
         GoToRandomItem();
-
+        InvokeRepeating("TryToFindItem", 15, 15);
     }
     private void Update()
     {
@@ -35,7 +35,6 @@ public class Familiar : MonoBehaviour
         agent.SetDestination(cauldron.position);
         if (!agent.pathPending && agent.remainingDistance <= arrivalThreshold && !agent.hasPath)
         {
-            Debug.Log("Gotoitem");
             GoToRandomItem();  // Call the event function when destination is reached
         }
     }
@@ -46,12 +45,54 @@ public class Familiar : MonoBehaviour
     }
     public void TryToFindItem()
     {
+
         searching = true;
-        if (Random.Range(0, 100) < 10) // Example probability adjustment if needed
+        if(this.gameObject == familiarSpawner.familiars[0])
         {
-            AssignRandomItem();
+            if (Random.Range(0, 100) < 10) // Example probability adjustment if needed
+            {
+                AudioManager.instance.SetSFXVolume(0.75f);
+                AudioManager.instance.PlaySFX(6);
+                AssignRandomItem();
+            }
         }
-        searching = false;
+
+
+        if (this.gameObject == familiarSpawner.familiars[1])
+        {
+            if (Random.Range(0, 100) < 20) // Example probability adjustment if needed
+            {
+                AudioManager.instance.SetSFXVolume(0.75f);
+                AudioManager.instance.PlaySFX(6);
+                AssignRandomItem();
+            }
+        }
+
+        if (this.gameObject == familiarSpawner.familiars[2])
+
+        {
+            if (Random.Range(0, 100) < 30) // Example probability adjustment if needed
+            {
+                AudioManager.instance.SetSFXVolume(0.75f);
+                AudioManager.instance.PlaySFX(6);
+                AssignRandomItem();
+            }
+        }
+
+        if (this.gameObject == familiarSpawner.familiars[3])
+
+        {
+            if (Random.Range(0, 100) < 40) // Example probability adjustment if needed
+            {
+                AudioManager.instance.SetSFXVolume(1f);
+                AudioManager.instance.PlaySFX(7);
+                AssignRandomItem();
+            }
+        }
+        
+            
+        
+        
     }
 
     private void AssignRandomItem()

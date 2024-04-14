@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+
 
 public class ItemFind : MonoBehaviour
 {
@@ -22,7 +22,8 @@ public class ItemFind : MonoBehaviour
     public TextMeshProUGUI timerText;
     public Animator animator;
     public Rigidbody2D rb;
-    public Menu menu;   
+    public Menu menu;
+    public bool itemFound;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class ItemFind : MonoBehaviour
             timerCanvas.SetActive(false);
             SearchAndGiveItem();
             StartCoroutine(Searching());
+
         }
         
         
@@ -107,18 +109,18 @@ public class ItemFind : MonoBehaviour
         }
         if (Random.Range(1, 5)== 1)  // 1 in 4 chance
         {
+            itemFound = true;
             itemToGive = Random.Range(1, 5);
             itemCount = GetRandomItemCount();
-            itemDisplay.SetActive(true);
-            Invoke("DisplayReset", 2);
+            
+            
         }
         else
         {
             itemCount = 0;
             itemToGive = 5;
             Debug.Log("No items found.");
-            itemDisplay.SetActive(true);
-            Invoke("DisplayReset", 2);
+            
         }
         
     }
@@ -163,6 +165,14 @@ public class ItemFind : MonoBehaviour
         menu.rbFreeze = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         yield return new WaitForSeconds(3);
+        if(itemFound==true)
+        {
+            AudioManager.instance.SetSFXVolume(1f);
+            AudioManager.instance.PlaySFX(5);
+            itemFound = false;
+        }
+        itemDisplay.SetActive(true);
+        Invoke("DisplayReset", 0.5f);
         menu.rbFreeze = false;
         Debug.Log("NotSearching");
         animator.SetBool("Searching", false);

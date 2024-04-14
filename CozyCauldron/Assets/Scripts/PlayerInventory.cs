@@ -42,6 +42,7 @@ public class PlayerInventory : MonoBehaviour
         {
             if (familiar.searching)
             {
+                Debug.Log("FamiliarFound");
                 ProcessFamiliarItemFind(familiar);
                 break; // Exit the loop after processing the first searching itemFind
             }
@@ -95,7 +96,7 @@ public class PlayerInventory : MonoBehaviour
         {
             case 1:
                 ingredient1 += familiar.itemCount;
-
+                
                 break;
             case 2:
                 ingredient2 += familiar.itemCount;
