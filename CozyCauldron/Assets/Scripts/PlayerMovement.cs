@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5.0f;           // Speed of the character
     public float jumpForce = 7.0f;       // Force of the jump
     private Rigidbody2D rb;              // Reference to the Rigidbody2D component
-    private bool isGrounded = true;      // Boolean to check if the player is grounded
+    public bool isGrounded = true;      // Boolean to check if the player is grounded
     private bool facingRight = true;     // Track which way the player is facing
     public Animator animator;
     public bool audioPlaying;

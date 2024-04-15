@@ -13,9 +13,10 @@ public class IngredientList2 : MonoBehaviour
     public Rigidbody2D rb;
     public Menu menu;
     public TextMeshProUGUI ingredientsTxt;
+    public PlayerMovement playerMovement;
     private void Update()
     {
-        if (ingredientRadius)
+        if (ingredientRadius && playerMovement.isGrounded)
         {
             interact.SetActive(true);
             if(Input.GetKeyDown(KeyCode.E))

@@ -24,6 +24,7 @@ public class ItemFind : MonoBehaviour
     public Rigidbody2D rb;
     public Menu menu;
     public bool itemFound;
+    public PlayerMovement playerMovement;
 
     private void Start()
     {
@@ -33,7 +34,7 @@ public class ItemFind : MonoBehaviour
     void Update()
     {
         // If the player is near, no cooldown is active, and the search delay has elapsed, allow searching
-        if (playerIsNear && cooldownTimer <= 0 && searchDelayTimer <= 0 && Input.GetKeyDown(KeyCode.E))
+        if (playerIsNear && cooldownTimer <= 0 && searchDelayTimer <= 0 && Input.GetKeyDown(KeyCode.E) && playerMovement.isGrounded)
         {
             
             timerCanvas.SetActive(false);

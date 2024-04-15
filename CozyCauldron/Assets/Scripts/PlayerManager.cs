@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     public int i4Added;
     public FamiliarSpawner familiarSpawner;
     public AudioSource source;
+    public PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,7 @@ public class PlayerManager : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
-        if (cauldronRadius)
+        if (cauldronRadius && playerMovement.isGrounded)
         {
             interact.SetActive(true);
 

@@ -700,6 +700,7 @@ MonoBehaviour:
   rb: {fileID: 740232487}
   menu: {fileID: 1124855654}
   itemFound: 0
+  playerMovement: {fileID: 740232486}
 --- !u!61 &83979119
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2696,6 +2697,7 @@ MonoBehaviour:
   rb: {fileID: 740232487}
   menu: {fileID: 1124855654}
   ingredientsTxt: {fileID: 594762815}
+  playerMovement: {fileID: 740232486}
 --- !u!1 &327903785
 GameObject:
   m_ObjectHideFlags: 0
@@ -5015,6 +5017,7 @@ MonoBehaviour:
   rb: {fileID: 740232487}
   menu: {fileID: 1124855654}
   itemFound: 0
+  playerMovement: {fileID: 740232486}
 --- !u!61 &721932037
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5322,6 +5325,7 @@ MonoBehaviour:
   rb: {fileID: 740232487}
   menu: {fileID: 1124855654}
   itemFound: 0
+  playerMovement: {fileID: 740232486}
 --- !u!61 &737365787
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5540,6 +5544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 7
+  isGrounded: 1
   animator: {fileID: 740232492}
   audioPlaying: 0
 --- !u!50 &740232487
@@ -5644,6 +5649,7 @@ MonoBehaviour:
   i4Added: 0
   familiarSpawner: {fileID: 601644700}
   source: {fileID: 1056767774}
+  playerMovement: {fileID: 740232486}
 --- !u!114 &740232491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7337,6 +7343,7 @@ MonoBehaviour:
   rb: {fileID: 740232487}
   menu: {fileID: 1124855654}
   ingredientsTxt: {fileID: 594762815}
+  playerMovement: {fileID: 740232486}
 --- !u!1 &1172108505
 GameObject:
   m_ObjectHideFlags: 0
@@ -8567,6 +8574,7 @@ MonoBehaviour:
   rb: {fileID: 740232487}
   menu: {fileID: 1124855654}
   itemFound: 0
+  playerMovement: {fileID: 740232486}
 --- !u!61 &1585018915
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9490,6 +9498,7 @@ MonoBehaviour:
   rb: {fileID: 740232487}
   menu: {fileID: 1124855654}
   ingredientsTxt: {fileID: 594762815}
+  playerMovement: {fileID: 740232486}
 --- !u!1 &1673912872
 GameObject:
   m_ObjectHideFlags: 0
@@ -11459,6 +11468,7 @@ MonoBehaviour:
   rb: {fileID: 740232487}
   menu: {fileID: 1124855654}
   ingredientsTxt: {fileID: 594762815}
+  playerMovement: {fileID: 740232486}
 --- !u!1 &2086401833
 GameObject:
   m_ObjectHideFlags: 0
@@ -11708,6 +11718,7 @@ MonoBehaviour:
   rb: {fileID: 740232487}
   menu: {fileID: 1124855654}
   itemFound: 0
+  playerMovement: {fileID: 740232486}
 --- !u!61 &2103428198
 BoxCollider2D:
   m_ObjectHideFlags: 0
