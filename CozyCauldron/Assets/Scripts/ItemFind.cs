@@ -36,8 +36,8 @@ public class ItemFind : MonoBehaviour
         // If the player is near, no cooldown is active, and the search delay has elapsed, allow searching
         if (playerIsNear && cooldownTimer <= 0 && searchDelayTimer <= 0 && Input.GetKeyDown(KeyCode.E) && playerMovement.isGrounded)
         {
-            
             timerCanvas.SetActive(false);
+            playerMovement.DisableInput();
             SearchAndGiveItem();
             StartCoroutine(Searching());
 
@@ -108,7 +108,7 @@ public class ItemFind : MonoBehaviour
         {
             Debug.Log("searching true");
         }
-        if (Random.Range(1, 5)== 1)  // 1 in 4 chance
+        if (Random.Range(1, 4)== 1)  
         {
             itemFound = true;
             itemToGive = Random.Range(1, 5);
@@ -166,14 +166,15 @@ public class ItemFind : MonoBehaviour
         menu.rbFreeze = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         yield return new WaitForSeconds(3);
+        itemDisplay.SetActive(true);
+        Invoke("DisplayReset", 0.4f);
+        playerMovement.EnableInput();
         if(itemFound==true)
         {
             AudioManager.instance.SetSFXVolume(1f);
             AudioManager.instance.PlaySFX(5);
             itemFound = false;
         }
-        itemDisplay.SetActive(true);
-        Invoke("DisplayReset", 0.5f);
         menu.rbFreeze = false;
         Debug.Log("NotSearching");
         animator.SetBool("Searching", false);

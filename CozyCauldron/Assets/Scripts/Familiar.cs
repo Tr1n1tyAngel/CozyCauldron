@@ -49,7 +49,7 @@ public class Familiar : MonoBehaviour
         searching = true;
         if(this.gameObject == familiarSpawner.familiars[0])
         {
-            if (Random.Range(0, 100) < 10) // Example probability adjustment if needed
+            if (Random.Range(0, 100) < 5) // Example probability adjustment if needed
             {
                 AudioManager.instance.SetSFXVolume(0.75f);
                 AudioManager.instance.PlaySFX(6);
@@ -60,7 +60,7 @@ public class Familiar : MonoBehaviour
 
         if (this.gameObject == familiarSpawner.familiars[1])
         {
-            if (Random.Range(0, 100) < 20) // Example probability adjustment if needed
+            if (Random.Range(0, 100) < 10) // Example probability adjustment if needed
             {
                 AudioManager.instance.SetSFXVolume(0.75f);
                 AudioManager.instance.PlaySFX(6);
@@ -71,7 +71,7 @@ public class Familiar : MonoBehaviour
         if (this.gameObject == familiarSpawner.familiars[2])
 
         {
-            if (Random.Range(0, 100) < 30) // Example probability adjustment if needed
+            if (Random.Range(0, 100) < 15) // Example probability adjustment if needed
             {
                 AudioManager.instance.SetSFXVolume(0.75f);
                 AudioManager.instance.PlaySFX(6);
@@ -82,7 +82,7 @@ public class Familiar : MonoBehaviour
         if (this.gameObject == familiarSpawner.familiars[3])
 
         {
-            if (Random.Range(0, 100) < 40) // Example probability adjustment if needed
+            if (Random.Range(0, 100) < 20) // Example probability adjustment if needed
             {
                 AudioManager.instance.SetSFXVolume(1f);
                 AudioManager.instance.PlaySFX(7);

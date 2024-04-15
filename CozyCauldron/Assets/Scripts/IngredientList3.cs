@@ -14,33 +14,36 @@ public class IngredientList3 : MonoBehaviour
     public Menu menu;
     public TextMeshProUGUI ingredientsTxt;
     public PlayerMovement playerMovement;
+    public PlayerManager playerManager;
     private void Update()
     {
         if (ingredientRadius && playerMovement.isGrounded)
         {
             interact.SetActive(true);
-            if(Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
+                playerMovement.DisableInput();
                 AudioManager.instance.SetSFXVolume(1);
                 AudioManager.instance.PlaySFX(1);
-                ingredientsTxt.text = "The ingredients you need to get the Winged familiar are: \n7 Mushrooms \n7 Eyeballs \n7 Rainbow Gems \n7 Feathers";
+                ingredientsTxt.text = "The ingredients you need to get the Ghost familiar are: \n" + playerManager.f3Ingredients[0] + " Mushrooms \n" + playerManager.f3Ingredients[1] + " Eyeballs \n" + playerManager.f3Ingredients[2] + " Rainbow Gems \n" + playerManager.f3Ingredients[3] + "Feathers";
                 ingredientsCanvas.SetActive(true);
                 menu.rbFreeze = true;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 interact.SetActive(false);
-                
+
             }
         }
 
-        
+
     }
-    
+
     public void LeaveIngredients()
     {
         AudioManager.instance.SetSFXVolume(1);
         AudioManager.instance.PlaySFX(1);
         ingredientsCanvas.SetActive(false);
         menu.rbFreeze = false;
+        playerMovement.EnableInput();
     }
     void OnTriggerEnter2D(Collider2D other)
     {

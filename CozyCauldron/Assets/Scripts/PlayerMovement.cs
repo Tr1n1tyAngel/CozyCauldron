@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight = true;     // Track which way the player is facing
     public Animator animator;
     public bool audioPlaying;
+    private bool inputEnabled = true;
 
     void Start()
     {
@@ -19,59 +20,73 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Only process movement input if the character is grounded
-        if (isGrounded)
-        {
-            if (rb.velocity.magnitude < 0.01f)  // Use a small threshold to account for floating-point imprecision
+       
+            // Only process movement input if the character is grounded
+            if (inputEnabled&&isGrounded)
+            {
+                // Checking if the jump button (space bar) is pressed and the character is grounded
+                if (Input.GetButtonDown("Jump"))
+                {
+                    rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                    isGrounded = false; // Set isGrounded to false to prevent double jumping
+                }
+                if (rb.velocity.magnitude < 0.01f)  // Use a small threshold to account for floating-point imprecision
+                {
+                    AudioManager.instance.StopSFX();
+                    audioPlaying = false;
+                }
+                else
+                {
+                    if (audioPlaying == false)
+                    {
+                        AudioManager.instance.SetSFXVolume(0.75f);
+                        AudioManager.instance.PlaySFXLoop(0);
+                        audioPlaying = true;
+                    }
+                }
+
+
+                animator.SetBool("Grounded", true);
+                // Movement input from the player
+                float moveHorizontal = Input.GetAxis("Horizontal");
+
+                animator.SetFloat("Speed", Mathf.Abs(moveHorizontal));
+                // Moving the Rigidbody2D based on input and speed
+                rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
+
+                // Check if sprite needs to be flipped
+                if (moveHorizontal > 0 && !facingRight)
+                    Flip();
+                else if (moveHorizontal < 0 && facingRight)
+                    Flip();
+            }
+            else
             {
                 AudioManager.instance.StopSFX();
                 audioPlaying = false;
             }
-            else
+            if(!isGrounded)
             {
-                if (audioPlaying == false)
-                {
-                    AudioManager.instance.SetSFXVolume(0.75f);
-                    AudioManager.instance.PlaySFXLoop(0);
-                    audioPlaying = true;
-                }
-            }
-            
-            
-            animator.SetBool("Grounded", true);
-            // Movement input from the player
-            float moveHorizontal = Input.GetAxis("Horizontal");
-
-            animator.SetFloat("Speed",Mathf.Abs(moveHorizontal));
-            // Moving the Rigidbody2D based on input and speed
-            rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
-
-            // Check if sprite needs to be flipped
-            if (moveHorizontal > 0 && !facingRight)
-                Flip();
-            else if (moveHorizontal < 0 && facingRight)
-                Flip();
-        }
-        else
-        {
-            AudioManager.instance.StopSFX();
-            audioPlaying = false;
             animator.SetBool("Grounded", false);
-        }
+            }
 
-        // Checking if the jump button (space bar) is pressed and the character is grounded
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            isGrounded = false; // Set isGrounded to false to prevent double jumping
-        }
+            
+        
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground")) // Ensure the GameObject has a tag named "Ground"
+        if (collision.gameObject.CompareTag("Ground") &&inputEnabled) // Ensure the GameObject has a tag named "Ground"
         {
             isGrounded = true; // Set isGrounded to true when touching the ground
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && inputEnabled) // Ensure the GameObject has a tag named "Ground"
+        {
+            isGrounded =false; // Set isGrounded to true when touching the ground
         }
     }
 
@@ -82,6 +97,16 @@ public class PlayerMovement : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1; // Flip the player's sprite by multiplying the x local scale by -1
         transform.localScale = theScale;
+    }
+    public void DisableInput()
+    {
+        inputEnabled = false;
+        rb.velocity = Vector2.zero;
+    }
+
+    public void EnableInput()
+    {
+        inputEnabled = true;
     }
 }
 

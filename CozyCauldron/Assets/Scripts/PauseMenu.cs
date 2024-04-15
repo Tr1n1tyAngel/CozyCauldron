@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public Menu menu;
     public GameObject pauseCanvas;
+    public PlayerMovement playerMovement;
     public void Resume()
     {
         AudioManager.instance.SetSFXVolume(1);
@@ -14,6 +15,8 @@ public class PauseMenu : MonoBehaviour
         menu.rbFreeze = false;
             Time.timeScale = 1f;
             pauseCanvas.SetActive(false);
+        playerMovement.EnableInput();
+        
 
     }
 }

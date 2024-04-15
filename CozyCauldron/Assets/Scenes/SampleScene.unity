@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -119}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -129}
+  m_SizeDelta: {x: 160, y: 37.6461}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &38723012
 MonoBehaviour:
@@ -231,15 +231,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: de040bc47dc5a1e4ebd50c3e46c48c6a, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -383,7 +383,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 44665411}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f50462ffd511a1844b9f27235ea0eb1b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -530,7 +530,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 53523007}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f50462ffd511a1844b9f27235ea0eb1b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2698,6 +2698,7 @@ MonoBehaviour:
   menu: {fileID: 1124855654}
   ingredientsTxt: {fileID: 594762815}
   playerMovement: {fileID: 740232486}
+  playerManager: {fileID: 740232490}
 --- !u!1 &327903785
 GameObject:
   m_ObjectHideFlags: 0
@@ -3235,6 +3236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: {fileID: 1124855654}
   pauseCanvas: {fileID: 445875312}
+  playerMovement: {fileID: 740232486}
 --- !u!1 &483812533
 GameObject:
   m_ObjectHideFlags: 0
@@ -3378,7 +3380,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 486890508}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f50462ffd511a1844b9f27235ea0eb1b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3500,8 +3502,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.44, y: -0.575}
-  m_SizeDelta: {x: 0.5527, y: 0.5628}
+  m_AnchoredPosition: {x: 0.44, y: -0.5851}
+  m_SizeDelta: {x: 0.826, y: 0.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &488248034
 MonoBehaviour:
@@ -4760,7 +4762,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.44, y: -0.575}
-  m_SizeDelta: {x: 0.5527, y: 0.5628}
+  m_SizeDelta: {x: 0.826, y: 0.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &673195608
 MonoBehaviour:
@@ -5159,7 +5161,7 @@ Transform:
   m_GameObject: {fileID: 725468297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.3845, y: -1.3, z: 0}
+  m_LocalPosition: {x: 27.5, y: -1.3, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5174,7 +5176,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 725468297}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f50462ffd511a1844b9f27235ea0eb1b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5432,7 +5434,7 @@ Transform:
   m_GameObject: {fileID: 737365785}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.49, y: -3.16, z: 0}
+  m_LocalPosition: {x: 17.49, y: -3.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5650,6 +5652,10 @@ MonoBehaviour:
   familiarSpawner: {fileID: 601644700}
   source: {fileID: 1056767774}
   playerMovement: {fileID: 740232486}
+  f1Ingredients: 00000000000000000000000000000000
+  f2Ingredients: 00000000000000000000000000000000
+  f3Ingredients: 00000000000000000000000000000000
+  f4Ingredients: 00000000000000000000000000000000
 --- !u!114 &740232491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7344,6 +7350,7 @@ MonoBehaviour:
   menu: {fileID: 1124855654}
   ingredientsTxt: {fileID: 594762815}
   playerMovement: {fileID: 740232486}
+  playerManager: {fileID: 740232490}
 --- !u!1 &1172108505
 GameObject:
   m_ObjectHideFlags: 0
@@ -7372,7 +7379,7 @@ Transform:
   m_GameObject: {fileID: 1172108505}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.17, y: -1.24, z: 0}
+  m_LocalPosition: {x: 45.14, y: -1.24, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7403,7 +7410,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1172108505}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f50462ffd511a1844b9f27235ea0eb1b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -7683,7 +7690,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1360188419}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f50462ffd511a1844b9f27235ea0eb1b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -7805,8 +7812,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.44, y: 0.421}
-  m_SizeDelta: {x: 0.5527, y: 0.5628}
+  m_AnchoredPosition: {x: -0.41300008, y: 0.421}
+  m_SizeDelta: {x: 0.826, y: 0.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1480008816
 MonoBehaviour:
@@ -8681,7 +8688,7 @@ Transform:
   m_GameObject: {fileID: 1585018913}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 79.64, y: -3.16, z: 0}
+  m_LocalPosition: {x: 79.64, y: -3.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9499,6 +9506,7 @@ MonoBehaviour:
   menu: {fileID: 1124855654}
   ingredientsTxt: {fileID: 594762815}
   playerMovement: {fileID: 740232486}
+  playerManager: {fileID: 740232490}
 --- !u!1 &1673912872
 GameObject:
   m_ObjectHideFlags: 0
@@ -9642,7 +9650,7 @@ Transform:
   m_GameObject: {fileID: 1682551975}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.32, y: -0.12, z: 0}
+  m_LocalPosition: {x: 5.24, y: -0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9680,7 +9688,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.42941904}
+  m_Offset: {x: 0.07788563, y: 0.42941904}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -9691,7 +9699,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 9.158959}
+  m_Size: {x: 0.0030603409, y: 9.158959}
   m_EdgeRadius: 0
 --- !u!1 &1687076610
 GameObject:
@@ -9830,7 +9838,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.44, y: 0.421}
-  m_SizeDelta: {x: 0.5527, y: 0.5628}
+  m_SizeDelta: {x: 0.826, y: 0.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1698621059
 MonoBehaviour:
@@ -9965,8 +9973,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -369}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -349.8849}
+  m_SizeDelta: {x: 160, y: 37.6461}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1704217946
 MonoBehaviour:
@@ -10037,7 +10045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10703,7 +10711,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1921922386}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f50462ffd511a1844b9f27235ea0eb1b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11469,6 +11477,7 @@ MonoBehaviour:
   menu: {fileID: 1124855654}
   ingredientsTxt: {fileID: 594762815}
   playerMovement: {fileID: 740232486}
+  playerManager: {fileID: 740232490}
 --- !u!1 &2086401833
 GameObject:
   m_ObjectHideFlags: 0
@@ -11565,7 +11574,6 @@ GameObject:
   - component: {fileID: 2102019731}
   - component: {fileID: 2102019730}
   - component: {fileID: 2102019729}
-  - component: {fileID: 2102019733}
   m_Layer: 5
   m_Name: IngredientsCanvas
   m_TagString: Untagged
@@ -11658,19 +11666,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2102019733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102019728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7271976f349ff7e419ec82f1a8774704, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingredientsTxt: {fileID: 594762815}
 --- !u!1 &2103428196
 GameObject:
   m_ObjectHideFlags: 0
